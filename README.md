@@ -1,37 +1,72 @@
-![alt text](thumbnail.png)
 
-[Link to video](https://youtu.be/3dCZxmd5bvs)
 
-[Discord and more](https://www.andreastrolle.com/)
+🧬 Variant Effect Prediction Web App
+🧾 Overview
+This project is a full-stack AI-powered web application that predicts how harmful (pathogenic) a specific genetic mutation (specifically single nucleotide variants or SNVs) might be. These predictions help assess whether small changes in DNA could potentially lead to diseases like cancer.
 
-## Overview
+We use Evo2, a cutting-edge protein language model built by the Arc Institute, to perform variant effect prediction — i.e., determining whether a mutation in a gene is likely benign (safe) or pathogenic (harmful).
 
-Hi 🤙 In this project, you'll build a web app that can classify how likely specific mutations in DNA are to cause diseases (variant effect prediction). We will deploy and use the state-of-the-art Evo2 large language model, and use it to predict the pathogenicity of single nucleotide variants (SNVs). You'll deploy a Python backend on an H100 serverless GPU with Modal, exposing a FastAPI endpoint for analysis. After deploying the backend, you'll build a web app around it where users can select a genome assembly, browse its chromosomes or search for specific genes like BRCA1, and view the gene's reference genome sequence. The user can input a mutation in the gene and predict its pathogenicity with AI, but the user can also pick from a list of existing known variations, and compare the Evo2 prediction (pathogenic/benign) against existing ClinVar classifications. The web app is built with Next.js, React, TypeScript, Tailwind CSS, and Shadcn UI and is based off of the T3 Stack. You'll be able to build along with me from start to finish.
+You don’t need any prior biology knowledge — the app guides users through selecting a human genome assembly (like hg38), browsing or searching for genes (like BRCA1), and exploring that gene’s DNA sequence. Users can input custom mutations or choose from known variants and see:
 
-Everything (including GPU's) is free, and no biological background is needed, since I'll walk you through all the theory needed.
+Evo2's prediction (Benign or Pathogenic)
 
-TL;DR / Simpler Version\
-DNA is like a long code made of A, T, G, and C. Small changes (mutations) in specific parts of this code, like in genes responsible for preventing cancer, can increase a person's risk of developing the disease. For instance, if an 'A' appears where a 'T' should be at a particular spot, that's a mutation. These changes can vary in how harmful they are, and we'll build a tool to analyze these different variations' harmfulness.
+ClinVar’s official classification (if available)
 
-Features:
+Confidence scores from the model
 
-- 🧬 Evo2 model for variant effect prediction
-- 🩺 Predict pathogenicity of single nucleotide variants (pathogenic/benign)
-- ⚖️ Comparison view for existing ClinVar classification vs. Evo2 prediction
-- 💯 Prediction confidence estimation
-- 🌍 Genome assembly selector (e.g., hg38)
-- 🗺️ Select genes from chromosome browsing or searching (e.g., BRCA1)
-- 🌐 See full reference genome sequence (UCSC API)
-- 🧬 Explore gene and variants data (NCBI ClinVar/E-utilities)
-- 💻 Python backend deployed with Modal
-- 🚀 FastAPI endpoint for variant analysis requests
-- ⚡ GPU-accelerated (H100) variant scoring via Modal
-- 📱 Responsive Next.js web interface
-- 🎨 Modern UI with Tailwind CSS & Shadcn UI
+Why this matters
+Imagine DNA as a very long text written using the letters A, T, G, and C. If even one letter changes at a critical place (mutation), it can cause major issues — or no problem at all. This tool helps figure out which mutations matter and which ones don’t.
 
-## Evo2 Model
+⚠️ All heavy processing is handled on a GPU server (NVIDIA H100) using Modal to keep things fast and free.
+📦 The backend is written in Python using FastAPI, and the frontend is built using Next.js + Tailwind CSS + Shadcn UI.
 
-Check out the paper behind the model.
+🌟 Features
+🔬 Prediction
+✅ Predict Pathogenicity: Upload or input single nucleotide variants (SNVs) and get Evo2’s prediction.
+
+💡 Prediction Confidence Score: See how confident Evo2 is in its result.
+
+⚖️ ClinVar Comparison: Compare Evo2’s result with known ClinVar labels to validate or challenge predictions.
+
+🧬 Gene & Genome Tools
+🌍 Genome Assembly Selector: Switch between genome versions (e.g., hg38).
+
+🔍 Gene Search & Browse: Quickly search for or browse chromosomes to find genes (e.g., BRCA1, TP53).
+
+📖 Reference Genome Viewer: See the actual DNA sequence for a selected gene (via UCSC Genome Browser API).
+
+🧬 Explore Known Variants: Load existing SNVs from ClinVar and test them with Evo2.
+
+💻 Architecture
+🚀 FastAPI Python Backend: Handles variant effect prediction requests using Evo2.
+
+⚡ GPU Inference via Modal: H100 GPUs power real-time variant scoring.
+
+🧠 Evo2 Model: Uses transformer-based protein modeling for accurate variant predictions.
+
+🔄 API Integrations:
+
+UCSC Genome API – for reference sequences
+
+NCBI ClinVar (via E-utilities) – for known mutation data
+
+🖥️ UI/UX
+🎨 Modern Responsive UI: Built with Next.js, Tailwind CSS, and Shadcn UI.
+
+📱 Mobile-Friendly: Works smoothly on phones, tablets, and desktops.
+
+🧩 Built on T3 Stack: Typesafe, scalable, and easy to extend.
+
+📚 Learn More
+🔗 Evo2 Model GitHub
+
+📄 Research Paper (bioRxiv)
+
+🧬 NCBI ClinVar
+
+🧪 UCSC Genome Browser
+
+
 
 - [Paper](https://www.biorxiv.org/content/10.1101/2025.02.18.638918v1)
 - [GitHub Repository](https://github.com/ArcInstitute/evo2)
