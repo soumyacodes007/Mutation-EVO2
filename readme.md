@@ -1,14 +1,20 @@
 # Evo2 Variant Effect Predictor 🧬
 
-demo video coming soon .
+🎥 **[Watch Demo Video](./document_6248959596413588736.mp4)**  
+
+
 
 An AI-powered web application to predict the pathogenicity of genetic variants using the state-of-the-art **Evo2** protein language model.
 
 This full-stack project provides a user-friendly interface to assess whether single nucleotide variants (SNVs) in human DNA are likely benign (harmless) or pathogenic (disease-causing). These predictions are crucial for research in fields like oncology, where understanding the impact of mutations is key.
 
-**[Live Demo Link (Coming Soon)]**
+### 🧬 Variant Effect Prediction using Evo2 (Research Paper Implementation)
+- Implemented the **Evo2 LLM research paper** (Arc Institute) to predict the pathogenicity of single nucleotide variants (SNVs) in DNA sequences.
+- Built a full-stack application with a **FastAPI Python backend on H100 GPUs (via Modal)** and a **modern T3-stack frontend** using Next.js, TypeScript, Tailwind CSS, and Shadcn UI.
+- Integrated **UCSC Genome Browser API** and **ClinVar dataset** to browse genes like BRCA1, fetch sequences, input mutations, and compare Evo2 predictions with clinical classifications.
+- Enabled real-time mutation testing and AI-based classification (pathogenic/benign) with prediction confidence, all accessible via a beautiful and responsive UI.
 
-
+---
 
 
 
