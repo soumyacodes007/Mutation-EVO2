@@ -2,6 +2,14 @@ import sys
 
 import modal
 
+from pydantic import BaseModel
+
+class VariantRequest(BaseModel):
+    variant_position: int
+    alternative: str
+    genome: str
+    chromosome: str
+
 evo2_image = (
     modal.Image.from_registry(
         "nvidia/cuda:12.4.0-devel-ubuntu22.04", add_python="3.12"
@@ -287,7 +295,12 @@ class Evo2Model:
 
     # @modal.method()
     @modal.fastapi_endpoint(method="POST")
-    def analyze_single_variant(self, variant_position: int, alternative: str, genome: str, chromosome: str):
+    def analyze_single_variant(self, request: VariantRequest):
+        variant_position = request.variant_position
+        alternative = request.alternative
+        genome = request.genome
+        chromosome = request.chromosome
+
         print("Genome:", genome)
         print("Chromosome:", chromosome)
         print("Variant position:", variant_position)
@@ -330,8 +343,26 @@ class Evo2Model:
 
 @app.local_entrypoint()
 def main():
-    # brca1_example.remote()
+    # Example of how you'd call the deployed Modal Function from your client
+    import requests
+    import json    # brca1_example.remote()
 
     evo2Model = Evo2Model()
-    result = evo2Model.analyze_single_variant.remote(
-        variant_position=43119628, alternative="G", genome="hg38", chromosome="chr17")
+
+    url = evo2Model.analyze_single_variant.web_url
+
+    payload = {
+        "variant_position": 43119628,
+        "alternative": "G",
+        "genome": "hg38",
+        "chromosome": "chr17"
+    }
+
+    headers = {
+        "Content-Type": "application/json"
+    }
+
+    response = requests.post(url, json=payload, headers=headers)
+    response.raise_for_status()
+    result = response.json()
+    print(result)
