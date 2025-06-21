@@ -1,6 +1,6 @@
 # Evo2 Variant Effect Predictor 🧬
 
-🎥 **[Watch Demo Video](https://youtu.be/ezh47Ca56Tc?si=qYjqeuGhS0cMIyfF)**  
+🎥 **[Watch Demo Video](https://youtu.be/skZDbXulNdg)**  
 
 
 
