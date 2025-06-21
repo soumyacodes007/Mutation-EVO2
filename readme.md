@@ -8,6 +8,11 @@ This full-stack project provides a user-friendly interface to assess whether sin
 
 **[Live Demo Link (Coming Soon)]**
 
+
+
+
+
+
 ## 🧾 Overview
 
 Imagine DNA as a very long instruction manual written with the letters A, T, G, and C. A single typo (a mutation) in a critical sentence can lead to serious problems, while a typo in a less important section might have no effect at all. This tool helps scientists and researchers quickly distinguish between the typos that matter and those that don't.
@@ -37,7 +42,7 @@ This project is built with a modern, scalable, and type-safe stack.
 | ---------------------- | ---------------------------------------------------------------------------------------------------- |
 | **Frontend**           | [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/), [Tailwind CSS](https://tailwindcss.com/), [Shadcn UI](https://ui.shadcn.com/) |
 | **Backend**            | [Python](https://www.python.org/), [FastAPI](https://fastapi.tiangolo.com/)                           |
-| **AI/ML Model**        | [Evo2 Protein Language Model](https://github.com/arcinstitute/evo)                                   |
+                                  |
 | **Infrastructure**     | [Modal](https://modal.com/) (for serverless H100 GPU inference)                                      |
 | **APIs**               | [UCSC Genome Browser API](https://genome.ucsc.edu/goldenPath/help/api.html), [NCBI E-utilities](https://www.ncbi.nlm.nih.gov/books/NBK25501/) (for ClinVar) |
 
@@ -49,18 +54,79 @@ The application follows a decoupled architecture:
 4.  **Data Fetching**: The backend also communicates with external APIs (UCSC, NCBI) to fetch reference sequences and ClinVar data.
 5.  **Response**: The result is passed back through the chain and displayed to the user in real-time.
 
-## 🚀 Getting Started
+🔗 Evo2 Model GitHub
 
-Follow these steps to set up and run the project on your local machine.
+📄 Research Paper (bioRxiv)
 
-### Prerequisites
--   [Git](https://git-scm.com/)
--   [Python 3.10](https://www.python.org/downloads/)
--   [Node.js and npm](https://nodejs.org/en/download/)
--   A [Modal](https://modal.com/) account (for backend deployment).
+🧬 NCBI ClinVar
 
-### 1. Clone the Repository
-Clone the repository and its submodules:
+🧪 UCSC Genome Browser
+
+
+
+- [Paper](https://www.biorxiv.org/content/10.1101/2025.02.18.638918v1)
+- [GitHub Repository](https://github.com/ArcInstitute/evo2)
+
+## Setup
+
+Follow these steps to install and set up the project.
+
+### Clone the Repository
+
 ```bash
 git clone --recurse-submodules https://github.com/Andreaswt/variant-analysis-evo2.git
-cd variant-analysis-evo2
+```
+
+### Install Python
+
+Download and install Python if not already installed. Use the link below for guidance on installation:
+[Python Download](https://www.python.org/downloads/)
+
+Create a virtual environment for each folder, except elevenlabs-clone-frontend, with **Python 3.10**.
+
+### Backend
+
+Navigate to backend folder:
+
+```bash
+cd evo2-backend
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Modal setup:
+
+```bash
+modal setup
+```
+
+Run on Modal:
+
+```bash
+modal run main.py
+```
+
+Deploy backend:
+
+```bash
+modal deploy main.py
+```
+
+### Frontend
+
+Install dependencies:
+
+```bash
+cd evo2-frontend
+npm i
+```
+
+Run:
+
+```bash
+npm run dev
+```
